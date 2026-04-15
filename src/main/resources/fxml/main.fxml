@@ -44,6 +44,10 @@
                 <Label fx:id="masterDataMenuLabel" text="主数据" style="-fx-text-fill: #888; -fx-font-size: 11px; -fx-padding: 10 15 5 15;"/>
                 <Button fx:id="uomMenuBtn" styleClass="sidebar-button" text="📏  计量单位" onAction="#showUnitOfMeasure"/>
                 
+                <Label fx:id="productMenuLabel" text="产品管理" style="-fx-text-fill: #888; -fx-font-size: 11px; -fx-padding: 10 15 5 15;"/>
+                <Button fx:id="materialCategoryMenuBtn" styleClass="sidebar-button" text="📂  物料产品分类" onAction="#showMaterialCategory"/>
+                <Button fx:id="materialMenuBtn" styleClass="sidebar-button" text="📦  物料产品管理" onAction="#showMaterialManagement"/>
+                
                 <Label fx:id="personalMenuLabel" text="个人设置" style="-fx-text-fill: #888; -fx-font-size: 11px; -fx-padding: 10 15 5 15;"/>
                 <Button styleClass="sidebar-button" text="🔐  修改密码" onAction="#showChangePassword"/>
                 

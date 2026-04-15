@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.mes.controller.MaterialController"
+           dividerPositions="0.2">
+
+    <VBox spacing="10" minWidth="200">
+        <padding>
+            <Insets top="5"/>
+        </padding>
+        <Label styleClass="content-header" text="物料分类"/>
+        <TreeView fx:id="categoryTreeView" VBox.vgrow="ALWAYS"/>
+    </VBox>
+
+    <VBox spacing="15">
+        <HBox alignment="CENTER_LEFT" spacing="15">
+            <Label styleClass="content-header" text="物料产品管理"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="addButton" styleClass="action-button, add-button" text="➕ 新增" onAction="#showAddDialog"/>
+            <Button fx:id="editButton" styleClass="action-button, edit-button" text="✏️ 修改" onAction="#handleBatchEdit"/>
+            <Button fx:id="deleteButton" styleClass="action-button, delete-button" text="🗑️ 删除" onAction="#handleBatchDelete"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #252526; -fx-background-radius: 8; -fx-padding: 15;">
+            <Label text="物料编码:" style="-fx-text-fill: #cccccc;"/>
+            <TextField fx:id="codeSearchField" promptText="请输入物料编码" styleClass="input-field" prefWidth="150"/>
+            <Label text="物料名称:" style="-fx-text-fill: #cccccc;"/>
+            <TextField fx:id="nameSearchField" promptText="请输入物料名称" styleClass="input-field" prefWidth="150"/>
+            <Button styleClass="action-button" text="🔍 查询" onAction="#handleSearch"
+                    style="-fx-background-color: #007acc; -fx-text-fill: white;"/>
+            <Button styleClass="action-button" text="🔄 重置" onAction="#handleReset"
+                    style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+        </HBox>
+
+        <TabPane fx:id="detailTabPane" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab text="物料列表">
+                    <VBox spacing="10">
+                        <TableView fx:id="materialTable">
+                            <columns>
+                                <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                                <TableColumn fx:id="codeColumn" text="物料编码" prefWidth="120"/>
+                                <TableColumn fx:id="nameColumn" text="物料名称" prefWidth="150"/>
+                                <TableColumn fx:id="specColumn" text="规格型号" prefWidth="120"/>
+                                <TableColumn fx:id="unitColumn" text="单位" prefWidth="80"/>
+                                <TableColumn fx:id="categoryColumn" text="所属分类" prefWidth="120"/>
+                                <TableColumn fx:id="minStockColumn" text="最小库存" prefWidth="100"/>
+                                <TableColumn fx:id="maxStockColumn" text="最大库存" prefWidth="100"/>
+                                <TableColumn fx:id="enabledColumn" text="是否启用" prefWidth="100"/>
+                                <TableColumn fx:id="actionColumn" text="操作" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <Tab text="BOM组成">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10"/>
+                        </padding>
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Label text="选中物料后可在此配置其BOM组成" style="-fx-text-fill: #cccccc;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="addBomButton" styleClass="action-button, add-button" text="➕ 新增BOM" onAction="#showAddBomDialog"/>
+                        </HBox>
+                        <TableView fx:id="bomTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="bomCodeColumn" text="子物料编码" prefWidth="150"/>
+                                <TableColumn fx:id="bomNameColumn" text="子物料名称" prefWidth="200"/>
+                                <TableColumn fx:id="bomQtyColumn" text="消耗数量" prefWidth="120"/>
+                                <TableColumn fx:id="bomRemarkColumn" text="备注" prefWidth="200"/>
+                                <TableColumn fx:id="bomActionColumn" text="操作" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </VBox>
+</SplitPane>
