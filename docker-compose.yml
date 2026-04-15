@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mes-desktop:
+    build: .
+    image: mes-desktop:latest
+    container_name: mes-desktop
+    ports:
+      - "5900:5900"
+      - "6080:6080"
+    environment:
+      - VNC_PASSWORD=mes123456
+      - DISPLAY=:1
+    volumes:
+      - mes-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  mes-data:
