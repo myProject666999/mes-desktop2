@@ -53,12 +53,25 @@ public class DataInitializer implements CommandLineRunner {
         Permission uomEdit = createPermissionIfNotExists("uom:edit", "编辑计量单位", Permission.PermissionType.BUTTON);
         Permission uomDelete = createPermissionIfNotExists("uom:delete", "删除计量单位", Permission.PermissionType.BUTTON);
 
+        // 产品管理权限
+        Permission productCategoryManage = createPermissionIfNotExists("product_category:manage", "物料产品分类", Permission.PermissionType.MENU);
+        Permission productCategoryAdd = createPermissionIfNotExists("product_category:add", "添加分类", Permission.PermissionType.BUTTON);
+        Permission productCategoryEdit = createPermissionIfNotExists("product_category:edit", "编辑分类", Permission.PermissionType.BUTTON);
+        Permission productCategoryDelete = createPermissionIfNotExists("product_category:delete", "删除分类", Permission.PermissionType.BUTTON);
+
+        Permission productManage = createPermissionIfNotExists("product:manage", "物料产品管理", Permission.PermissionType.MENU);
+        Permission productAdd = createPermissionIfNotExists("product:add", "添加物料", Permission.PermissionType.BUTTON);
+        Permission productEdit = createPermissionIfNotExists("product:edit", "编辑物料", Permission.PermissionType.BUTTON);
+        Permission productDelete = createPermissionIfNotExists("product:delete", "删除物料", Permission.PermissionType.BUTTON);
+
         Role adminRole = createRoleIfNotExists("ADMIN", "系统管理员",
                 userManage, userAdd, userEdit, userDelete, userResetPassword,
                 roleManage, roleAdd, roleEdit, roleDelete,
                 permissionManage, permissionAdd, permissionEdit, permissionDelete,
                 passwordChange, mesView,
-                uomManage, uomAdd, uomEdit, uomDelete);
+                uomManage, uomAdd, uomEdit, uomDelete,
+                productCategoryManage, productCategoryAdd, productCategoryEdit, productCategoryDelete,
+                productManage, productAdd, productEdit, productDelete);
 
         Role userRole = createRoleIfNotExists("USER", "普通用户",
                 passwordChange, mesView);
