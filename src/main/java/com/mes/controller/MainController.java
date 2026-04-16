@@ -70,10 +70,19 @@ public class MainController {
     private Button uomMenuBtn;
 
     @FXML
+    private Button materialCategoryMenuBtn;
+
+    @FXML
+    private Button materialProductMenuBtn;
+
+    @FXML
     private Label systemMenuLabel;
 
     @FXML
     private Label masterDataMenuLabel;
+
+    @FXML
+    private Label productMenuLabel;
 
     @FXML
     private Label personalMenuLabel;
@@ -100,6 +109,7 @@ public class MainController {
         boolean hasRolePerm = authService.hasPermission("role:manage");
         boolean hasPermPerm = authService.hasPermission("permission:manage");
         boolean hasUomPerm = authService.hasPermission("uom:manage");
+        boolean hasMaterialPerm = authService.hasPermission("material:manage");
 
         userMenuBtn.setVisible(hasUserPerm);
         userMenuBtn.setManaged(hasUserPerm);
@@ -109,6 +119,10 @@ public class MainController {
         permissionMenuBtn.setManaged(hasPermPerm);
         uomMenuBtn.setVisible(hasUomPerm);
         uomMenuBtn.setManaged(hasUomPerm);
+        materialCategoryMenuBtn.setVisible(hasMaterialPerm);
+        materialCategoryMenuBtn.setManaged(hasMaterialPerm);
+        materialProductMenuBtn.setVisible(hasMaterialPerm);
+        materialProductMenuBtn.setManaged(hasMaterialPerm);
 
         boolean hasSystemMenu = hasUserPerm || hasRolePerm || hasPermPerm;
         systemMenuLabel.setVisible(hasSystemMenu);
@@ -116,6 +130,9 @@ public class MainController {
 
         masterDataMenuLabel.setVisible(hasUomPerm);
         masterDataMenuLabel.setManaged(hasUomPerm);
+
+        productMenuLabel.setVisible(hasMaterialPerm);
+        productMenuLabel.setManaged(hasMaterialPerm);
     }
 
     private void updateDashboard() {
@@ -184,6 +201,18 @@ public class MainController {
     public void showUnitOfMeasure() {
         loadView("/fxml/unit-of-measure.fxml");
         setActiveButton(uomMenuBtn);
+    }
+
+    @FXML
+    public void showMaterialCategory() {
+        loadView("/fxml/material-category.fxml");
+        setActiveButton(materialCategoryMenuBtn);
+    }
+
+    @FXML
+    public void showMaterialProduct() {
+        loadView("/fxml/material-product.fxml");
+        setActiveButton(materialProductMenuBtn);
     }
 
     @FXML

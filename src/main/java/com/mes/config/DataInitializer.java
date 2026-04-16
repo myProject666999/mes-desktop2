@@ -53,12 +53,18 @@ public class DataInitializer implements CommandLineRunner {
         Permission uomEdit = createPermissionIfNotExists("uom:edit", "编辑计量单位", Permission.PermissionType.BUTTON);
         Permission uomDelete = createPermissionIfNotExists("uom:delete", "删除计量单位", Permission.PermissionType.BUTTON);
 
+        Permission materialManage = createPermissionIfNotExists("material:manage", "物料产品管理", Permission.PermissionType.MENU);
+        Permission materialAdd = createPermissionIfNotExists("material:add", "添加物料产品", Permission.PermissionType.BUTTON);
+        Permission materialEdit = createPermissionIfNotExists("material:edit", "编辑物料产品", Permission.PermissionType.BUTTON);
+        Permission materialDelete = createPermissionIfNotExists("material:delete", "删除物料产品", Permission.PermissionType.BUTTON);
+
         Role adminRole = createRoleIfNotExists("ADMIN", "系统管理员",
                 userManage, userAdd, userEdit, userDelete, userResetPassword,
                 roleManage, roleAdd, roleEdit, roleDelete,
                 permissionManage, permissionAdd, permissionEdit, permissionDelete,
                 passwordChange, mesView,
-                uomManage, uomAdd, uomEdit, uomDelete);
+                uomManage, uomAdd, uomEdit, uomDelete,
+                materialManage, materialAdd, materialEdit, materialDelete);
 
         Role userRole = createRoleIfNotExists("USER", "普通用户",
                 passwordChange, mesView);
