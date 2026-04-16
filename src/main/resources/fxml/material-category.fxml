@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mes.controller.MaterialCategoryController"
+      stylesheets="/css/style.css"
+      styleClass="content-area"
+      spacing="15">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label styleClass="content-header" text="物料产品分类"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="search-box">
+        <Label text="分类名称:"/>
+        <TextField fx:id="nameSearchField" promptText="请输入分类名称" prefWidth="150"/>
+        
+        <Label text="是否启用:"/>
+        <ComboBox fx:id="enabledSearchCombo" prefWidth="100"/>
+        
+        <Button styleClass="primary-button" text="查询" onAction="#handleSearch"/>
+        <Button styleClass="default-button" text="重置" onAction="#handleReset"/>
+        
+        <Region HBox.hgrow="ALWAYS"/>
+        
+        <Button fx:id="expandAllButton" styleClass="default-button" text="展开全部" onAction="#handleExpandAll"/>
+        <Button fx:id="collapseAllButton" styleClass="default-button" text="折叠全部" onAction="#handleCollapseAll"/>
+        <Button fx:id="addButton" styleClass="primary-button" text="新增" onAction="#showAddDialog"/>
+    </HBox>
+
+    <TableView fx:id="categoryTable" styleClass="data-table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="codeColumn" text="分类编码" prefWidth="120"/>
+            <TableColumn fx:id="nameColumn" text="分类名称" prefWidth="150"/>
+            <TableColumn fx:id="descriptionColumn" text="描述" prefWidth="200"/>
+            <TableColumn fx:id="sortOrderColumn" text="排序" prefWidth="60"/>
+            <TableColumn fx:id="enabledColumn" text="是否启用" prefWidth="80"/>
+            <TableColumn fx:id="actionColumn" text="操作" prefWidth="120"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+</VBox>
