@@ -25,6 +25,10 @@ public class UnitOfMeasureService {
         return unitOfMeasureRepository.findAll();
     }
 
+    public List<UnitOfMeasure> findAllEnabled() {
+        return unitOfMeasureRepository.findByEnabledTrue();
+    }
+
     public Page<UnitOfMeasure> findAll(Pageable pageable) {
         return unitOfMeasureRepository.findAll(pageable);
     }

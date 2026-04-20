@@ -70,10 +70,19 @@ public class MainController {
     private Button uomMenuBtn;
 
     @FXML
+    private Button productCategoryMenuBtn;
+
+    @FXML
+    private Button productManagementMenuBtn;
+
+    @FXML
     private Label systemMenuLabel;
 
     @FXML
     private Label masterDataMenuLabel;
+
+    @FXML
+    private Label productMenuLabel;
 
     @FXML
     private Label personalMenuLabel;
@@ -100,6 +109,8 @@ public class MainController {
         boolean hasRolePerm = authService.hasPermission("role:manage");
         boolean hasPermPerm = authService.hasPermission("permission:manage");
         boolean hasUomPerm = authService.hasPermission("uom:manage");
+        boolean hasProductCategoryPerm = authService.hasPermission("product_category:manage");
+        boolean hasProductManagePerm = authService.hasPermission("product:manage");
 
         userMenuBtn.setVisible(hasUserPerm);
         userMenuBtn.setManaged(hasUserPerm);
@@ -109,6 +120,10 @@ public class MainController {
         permissionMenuBtn.setManaged(hasPermPerm);
         uomMenuBtn.setVisible(hasUomPerm);
         uomMenuBtn.setManaged(hasUomPerm);
+        productCategoryMenuBtn.setVisible(hasProductCategoryPerm);
+        productCategoryMenuBtn.setManaged(hasProductCategoryPerm);
+        productManagementMenuBtn.setVisible(hasProductManagePerm);
+        productManagementMenuBtn.setManaged(hasProductManagePerm);
 
         boolean hasSystemMenu = hasUserPerm || hasRolePerm || hasPermPerm;
         systemMenuLabel.setVisible(hasSystemMenu);
@@ -116,6 +131,10 @@ public class MainController {
 
         masterDataMenuLabel.setVisible(hasUomPerm);
         masterDataMenuLabel.setManaged(hasUomPerm);
+
+        boolean hasProductMenu = hasProductCategoryPerm || hasProductManagePerm;
+        productMenuLabel.setVisible(hasProductMenu);
+        productMenuLabel.setManaged(hasProductMenu);
     }
 
     private void updateDashboard() {
@@ -184,6 +203,18 @@ public class MainController {
     public void showUnitOfMeasure() {
         loadView("/fxml/unit-of-measure.fxml");
         setActiveButton(uomMenuBtn);
+    }
+
+    @FXML
+    public void showProductCategory() {
+        loadView("/fxml/product-category.fxml");
+        setActiveButton(productCategoryMenuBtn);
+    }
+
+    @FXML
+    public void showProductManagement() {
+        loadView("/fxml/product-management.fxml");
+        setActiveButton(productManagementMenuBtn);
     }
 
     @FXML

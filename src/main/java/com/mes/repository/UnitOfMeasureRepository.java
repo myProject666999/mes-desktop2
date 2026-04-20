@@ -17,4 +17,6 @@ public interface UnitOfMeasureRepository extends JpaRepository<UnitOfMeasure, Lo
     List<UnitOfMeasure> findByCodeContaining(String code);
     
     boolean existsByCode(String code);
+
+    List<UnitOfMeasure> findByEnabledTrue();
 }
